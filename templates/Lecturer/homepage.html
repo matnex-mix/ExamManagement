@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}
+            Lecturer Homepage
+           {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('#Class').change(function(){
+                SemesterVal = $('#Semester').val();
+                if (SemesterVal != ''){
+                    $('#CourseCode').html('<option></option>');
+                    $('#UploadResultForm').submit();
+                    }
+            });
+            $('#Semester').change(function (){
+                $('#CourseCode').html('<option></option>');
+                $('#UploadResultForm').submit();
+             });
+
+
+        });
+    </script>
+    <style type="text/css">
+        body{background-color:#A8A8A8}
+        a:link,a:visited{text-decoration:none}
+        #headerText{color:rgba(0,0,211,0.6);font-weight:bolder;font-family:verdana}
+        .btn-submit{width:100px;background-color:rgba(0,0,211,0.6);color:white;padding:8px;margin:5px;border:0px;
+        border-radius:5px}
+        .btn-reset{width:100px;background-color:rgba(211,0,0,0.6);color:white;padding:8px;margin:5px;border:0px;
+        border-radius:5px}
+        #linksWrapper {width:20%;background-image:url('{% static "back.jpg" %}');background-size:100% 50%;
+        text-align:center;color:white;min-height:700px;display:inline-block;overflow:hidden;vertical-align:text-top;
+        margin:0px}
+        #linksWrapper #links{background-color:rgba(0,0,211,0.6);width:100%;font-family:verdana;height:700px}
+        #linksWrapper #headerP{margin:0px;padding:20px;font-weight:bolder;font-size:25px}
+        #linksWrapper li{list-style-type:none;color:white;padding:15px;text-align:justify}
+        #linksWrapper li:hover{background-color:blue}
+        #mainWrapper{width:78%;display:inline-block;vertical-align:text-top;margin:0px;font-family:verdana}
+        #logoutDash{width:100%;background-color:rgba(00,0,211,0.6);color:white;padding:2px;display:inline-block;vertical-align:text-top;
+        margin:0px;font-family:verdana}
+        #logoutDash p{display:inline-block;width:45%;}
+        #logoutDash p:nth-child(1){font-size:20px;font-weight:bolder;text-align:center}
+        #logoutDash p:nth-child(2){text-align:right}
+        .fullContentDiv{width:90%;background-color:white;display:inline-block;margin-top:10px;margin-left:20px;padding:20px;
+        resize:none;overflow:scroll}
+        #formTable{width:70%;padding:10px;margin:auto}
+        #formTable .successTd{color:green;}
+        #formTable td{padding:10px;}
+        #formTable .textTd{width:30%;}
+        #formTable .textField{width:80%;height:25px;vertical-align:text-top;padding:10px;}
+        #formTable .selectField{width:85%;height:35px;vertical-align:text-top;text-align:center}
+
+        .fullContentDiv #buttonP{text-align:right;width:80%;margin:auto}
+        .fullContentDiv #buttonP .Positive{width:100px;background-color:rgba(0,0,255,0.8);color:white;padding:8px;border:0px;
+        border-radius:2px;margin:10px}
+        .fullContentDiv #buttonP .Negative{width:100px;background-color:rgba(255,0,0,0.8);color:white;padding:8px;border:0px;
+        border-radius:2px;margin:10px}
+        .table{width:95%;padding:10px;;font-size:14px}
+        .table tr:nth-child(1){background-color:rgba(0,0,211,0.6)}
+        .table tr:nth-child(even){background-color:rgba(0,0,0,0.1)}
+        .table td{padding:8px;text-align:center;}
+        .table .likelyLarge{min-width:200px}
+        .table a:link, .table a:visited{color:blue}
+        #userDetailsDiv{width:60%;margin:auto;background-color:white;box-shadow:0px 0px 2px blue;padding:15px;margin-top:20px}
+        #userDetailsDiv img{width:100%;height:400px;resize:none;box-shadow:0px 0px 2px blue}
+        #userDetailsDiv button{width:30%;padding:10px;background-color:rgba(0,0,211,0.8);color:white;border:0px;border-radius:4px}
+        #messageWrapper{width:100%;margin-top:10px;display:inline-block;padding:10px;vertical-align:text-top}
+        #messageWrapper #noMessageDiv{width:30%;margin:auto;margin-top:30px;padding:50px;background-color:white;
+        box-shadow:0px 0px 2px blue;text-align:center;font-family:verdana;color:blue;}
+        #messageWrapper #noMessageDiv img {width:80%;height:200px;margin:20px}
+        #messageWrapper #submitMessageDiv{width:60%;padding:10px;background-color:white;margin:10px;
+        box-shadow:0px 0px 2px rgba(0,0,211,0.6);display:inline-block;vertical-align:text-top}
+        #messageWrapper #submitMessageDiv table{width:90%;margin:auto;font-family:verdana}
+        #messageWrapper #submitMessageDiv td{vertical-align:text-top}
+        #messageWrapper #submitMessageDiv .messageTextField{width:100%;height:300px;padding:10px;resize:none;vertical-align:text-top;
+        margin-bottom:10px}
+        #messageWrapper #submitButton{width:50%;padding:10px;background-color:rgba(0,0,211,0.6);color:white;border:0px;
+        border-radius:5px}
+        #messageWrapper #chatHistoryDivWrapper{width:32%;margin:10px;height:500px;overflow:scroll;vertical-align:text-top;
+        display:inline-block;font-family:verdana;font-size:14px;}
+        #messageWrapper #chatHistoryDivWrapper .receiverDiv{background-color:white;width:80%;padding:8px;float:left;
+        box-shadow:0px 0px 1px blue;margin-bottom:10px;border-radius:10px}
+        #messageWrapper #chatHistoryDivWrapper .senderDiv{background-color:rgba(0,0,211,0.6);width:80%;padding:8px;float:right;
+        box-shadow:0px 0px 1px blue;color:white;margin-bottom:10px;border-radius:10px}
+        #messageWrapper #chatHistoryDivWrapper img{width:90%;height:100px;margin:auto;margin:10px}
+        #messageWrapper #chatHistoryDivWrapper .receiverDiv p{color:rgba(0,0,211,0.6)}
+        #messageWrapper .allMessages table{width:50%;background-color:white;margin:10px;padding:10px;box-shadow:0px 0px 1px blue;
+        font-family:verdana;color:blue}
+        #messageWrapper .allMessages table .imgTd{width:40%;padding:10px}
+        #messageWrapper .allMessages table img{width:100%;height:100px;resize:none;}
+        #messageWrapper .allMessages table p small {color:black}
+        .selectionDiv{width:40%;margin:auto;margin-top:10px;border-radius:10px;background-color:white;padding:40px;text-align:center}
+    </style>
+</head>
+<body>
+<div id="linksWrapper">
+<div id="links">
+{% block links %}
+<p id="headerP">Lecturer Portal</p>
+<a href="{% url 'LecturerHomepage' %}"><li><span class="fa fa-dashboard"></span>&#160;&#160; Dashboard</li></a>
+<a href="{% url 'UploadResultPage' %}"><li><span class="fa fa-upload"></span>&#160;&#160; Upload Result</li></a>
+<a href="{% url 'PendingResultPage' %}"><li><span class="fa fa-eye"></span>&#160;&#160; Pending Results</li></a>
+<a href="{% url 'AllResultsPage' %}"><li><span class="fa fa-eye"></span>&#160;&#160; Results Uploaded</li></a>
+<a href="{% url 'LecturerViewUsersPage' %}"><li><span class="fa fa-eye"></span>&#160;&#160; All Users</li></a>
+<a href="{% url 'LecturerMessagePage' %}"><li><span class="fa fa-message"></span>&#160;&#160;Messages</li></a>
+<a href=""><li><span class="fa fa-gears"></span>&#160;&#160; Change Password</li></a>
+{% endblock %}
+</div>
+</div>
+<div id="mainWrapper">
+<div id="logoutDash">
+<p>EXAM MANAGEMENT SYSTEM</p>
+<p><span class="fa fa-power-off"></span>&#160;&#160; Logout</p>
+</div>
+{% block content %}
+{% endblock %}
+</div>
+</body>
+</html>

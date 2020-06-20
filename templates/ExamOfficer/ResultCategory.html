@@ -1,0 +1,32 @@
+{% extends 'ExamOfficer/homepage.html' %}
+{% block title %}
+Upload Result
+{% endblock %}
+{% block content %}
+<div class="fullContentDiv">
+<table id="formTable">
+    <form action="{% url 'ExamOfficerViewResultPage' %}" method="post" novalidate>
+        {% csrf_token %}
+        <tr><td></td>
+            <td><small><strong>{{ error }}</strong></small></td></tr>
+        {% for fields in form %}
+        <tr>
+            <td class="textTd">{{ fields.label }}</td>
+            <td> {{ fields }}<br/>
+            {% if fields.errors %}
+            {{ fields.errors }}
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td><td><p id="buttonP">
+            <button type="submit" class="Positive">Proceed</button>
+            <button type="reset" class="Negative">Cancel</button></p>
+        </td>
+        </tr>
+    </form>
+</table>
+</div>
+
+{% endblock %}

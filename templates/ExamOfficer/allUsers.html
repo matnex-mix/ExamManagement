@@ -1,0 +1,24 @@
+
+{% extends 'ExamOfficer/homepage.html' %}
+{% block title %}
+All Users
+{% endblock %}
+{% block content %}
+<div class="fullContentDiv">
+<table cellspacing="0" class="table">
+    <tr>
+        <td>User Id</td>
+        <td>Names</td>
+        <td>More</td>
+    </tr>
+    {% for rows in users %}
+    <tr>
+        <td>{{ rows.UserId }}</td>
+        <td>{{ rows.Surname }} {{ rows.Firstname }}</td>
+        <td><a href="{% url 'ExamOfficerViewProfilePage' rows.id %}">Proceed</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+{% endblock %}

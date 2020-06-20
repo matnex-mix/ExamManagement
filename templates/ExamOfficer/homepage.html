@@ -1,0 +1,15 @@
+{% extends 'Lecturer/homepage.html' %}
+{% block title %}
+Exam Officer Homepage
+{% endblock %}
+{% block links %}
+<p id="headerP">Exam Officer Portal</p>
+<a href=""><li><span class="fa fa-dashboard"></span>&#160;&#160; Dashboard</li></a>
+<a href="{% url 'ExamOfficerSelectResultCategoryPage' %}"><li><span class="fa fa-upload"></span>&#160;&#160; View Result</li></a>
+<a href=""><li><span class="fa fa-history"></span>&#160;&#160; Compiled Result</li></a>
+<a href="{% url 'ExamOfficerViewUsersPage' %}"><li><span class="fa fa-upload"></span>&#160;&#160; All Users</li></a>
+<a href="{% url 'ExamOfficerMessagePage' %}"><li><span class="fa fa-message"></span>&#160;&#160;Messages</li></a>
+<a href=""><li><span class="fa fa-gears"></span>&#160;&#160; Change Password</li></a>
+{% endblock %}
+{% block content %}
+{% endblock %}

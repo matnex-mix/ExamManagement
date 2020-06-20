@@ -1,0 +1,37 @@
+{% extends 'Hod/homepage.html' %}
+{% block title %}
+Result Page
+{% endblock %}
+{% block content %}
+<div class="fullContentDiv">
+    <p id="headerText"><small>Dashboard / Result(s)</small></p>
+    <table class="table" cellspacing="0">
+        <tr>
+            <td>Lecturer Id</td>
+            <td>Course Code</td>
+            <td>Class</td>
+            <td>Session</td>
+            <td>Semester</td>
+            <td>Date Uploaded</td>
+            <td>View</td>
+            <td>Forward</td>
+        </tr>
+        {% for rows in AllResults %}
+        <tr>
+            <td>{{ rows.LecturerId }}</td>
+            <td>{{ rows.CourseCode }}</td>
+            <td>{{ rows.Class }}</td>
+            <td>{{ rows.Session }}</td>
+            <td>{{ rows.Semester }}</td>
+            <td>{{ rows.DateUploaded }}</td>
+            <td><a href="{% url 'HodResultDetailsPage' rows.id %}">View</a> </td>
+            <td>{% if rows.AcceptedByHod == 'No' %}
+            <a href="{% url 'HodForwardResultPage' rows.id %}">Proceed</a>
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

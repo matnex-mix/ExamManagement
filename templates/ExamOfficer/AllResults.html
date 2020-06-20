@@ -1,0 +1,42 @@
+{% extends 'ExamOfficer/homepage.html' %}
+{% block title %}
+Result Page
+{% endblock %}
+{% block content %}
+<div class="fullContentDiv">
+    <p id="headerText"><small>Dashboard / Result(s)</small></p>
+    <table class="table" cellspacing="0">
+        <tr>
+            <td>Course Code</td>
+            <td>Class</td>
+            <td>Session</td>
+            <td>Semester</td>
+            <td>Date Uploaded</td>
+            <td>View</td>
+            <td>Compile</td>
+        </tr>
+        {% for rows in AllResults %}
+        <tr>
+            <td>{{ rows.CourseCode }}</td>
+            <td>{{ rows.Class }}</td>
+            <td>{{ rows.Session }}</td>
+            <td>{{ rows.Semester }}</td>
+            <td>{{ rows.DateUploaded }}</td>
+            <td>
+                {% if rows.Compiled == 'No' %}
+                <a href="{% url 'ExamOfficerResultDetailsPage' rows.id %}">View</a>
+                {% else %}
+                <a href="{% url 'ExamOfficerViewCompilePage' rows.id %}">View</a>
+                {% endif %}
+            </td>
+            <td>
+            {% if rows.Compiled == 'No' %}
+            <a href="{% url 'ExamOfficerCompilePage' rows.id %}">Proceed</a>
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

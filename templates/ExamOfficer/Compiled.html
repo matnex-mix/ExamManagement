@@ -1,0 +1,18 @@
+{% extends 'ExamOfficer/homepage.html' %}
+{% block title %}
+Forward To Exam Officer
+{% endblock %}
+{% block content %}
+<div class="selectionDiv">
+    {% if success %}
+    <p>{{ success }}</p>
+    {% else %}
+    <h4>Proceed With Action?</h4>
+    <p><form action="" method="post">
+    {% csrf_token %}
+    <button class="btn-submit" type="submit">Yes</button>
+    <a href="{% url 'ExamOfficerSelectResultCategoryPage' %}"><button class="btn-reset" type="button">Cancel</button></a>
+    </form>   </p>
+    {% endif %}
+</div>
+{% endblock %}

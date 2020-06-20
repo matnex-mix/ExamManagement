@@ -1,0 +1,28 @@
+{% extends 'Lecturer/homepage.html' %}
+{% block title %}
+Pending Result Page
+{% endblock %}
+{% block content %}
+<div class="fullContentDiv">
+    <p id="headerText"><small>Dashboard / All Pending Result(s)</small></p>
+    <table class="table" cellspacing="0">
+        <tr>
+            <td>Course Code</td>
+            <td>Class</td>
+            <td>Session</td>
+            <td>Semester</td>
+            <td>Edit</td>
+        </tr>
+        {% for rows in Pending %}
+        <tr>
+            <td>{{ rows.CourseCode }}</td>
+            <td>{{ rows.Class }}</td>
+            <td>{{ rows.Session }}</td>
+            <td>{{ rows.Semester }}</td>
+            <td><a href="{% url 'LecturerEditPage' rows.id %}">Edit</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

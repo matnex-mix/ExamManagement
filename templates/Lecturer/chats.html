@@ -1,0 +1,54 @@
+{% extends 'Lecturer/homepage.html' %}
+{% load static %}
+{% block title %}
+Chat Page
+{% endblock %}
+{% block content %}
+<div id="messageWrapper">
+    <div id="submitMessageDiv">
+
+        <table>
+            <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for fields in form %}
+            <tr>
+                <td> {{ fields.label }}</td>
+                <td> {{ fields }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td id="submitTd"><input type="submit" value="Send Message" id="submitButton"> </td>
+            </tr>
+             </form>
+        </table>
+    </div>
+    {% block chatHistory %}
+    <div id="chatHistoryDivWrapper">
+    {% for rows in chatHistory %}
+    {% if rows.sender == owner %}
+    <div class="senderDiv">
+    {{ rows.message }}
+    {% if rows.file %}
+     <a href="{{ rows.encrypt }}" download>
+        <img src="{% static 'file.png' %}" alt="img here"/></a>
+    {% endif %}
+        <p><small>{{ rows.dateSent }}</small></p>
+    </div>
+    {% else %}
+    <div class="receiverDiv">
+    {{ rows.message }}
+     {% if rows.file %}
+     <a href="{{ rows.encrypt }}" download>
+        <img src="{% static 'file.png' %}" alt="img here"/></a>
+    {% endif %}
+        <p><small>{{ rows.dateSent }}</small></p>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+
+    </div>
+    {% endblock %}
+</div>
+{% endblock %}

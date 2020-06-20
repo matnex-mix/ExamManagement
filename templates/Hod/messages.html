@@ -1,0 +1,43 @@
+{% extends 'Hod/homepage.html' %}
+{% load static %}
+{% block title %}
+All Messages
+{% endblock %}
+{% block content %}
+<div id="messageWrapper">
+{% if noMessage %}
+<div id="noMessageDiv">
+    {{ noMessage }}
+    <img src="{% static 'empty.png' %}"/>
+</div>
+{% endif %}
+{% for rows in allMessages %}
+ <a href="{% url 'HodChatPage' rows.chatId %}">
+<div class="allMessages">
+<table>
+    <tr>
+        <td class="imgTd">
+            {% if rows.image == '' %}
+            <img src="{% static 'user.png' %}">
+            {% else %}
+            <img src="{% static 'user.png' %}">
+            {% endif %}
+        </td>
+        <td class="contentTd"><p><small>{{ rows.names }}</small></p>
+        <p>{{ rows.message }}</p>
+            <p><small>{{ rows.dateSent }} {{ rows.status }}</small></p>
+            <p><small>Sender : {% if rows.sender == owner %}
+            You
+            {% else %}
+               {{ rows.names }}
+             {% endif %}
+            </small>
+            </p>
+        </td>
+    </tr>
+</table>
+</div>
+ </a>
+{% endfor %}
+</div>
+{% endblock %}

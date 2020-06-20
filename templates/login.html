@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Admin Login
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        body{background-image:url('{% static "back.jpg" %}');background-size:100% 100%;min-height:700px;
+        background-repeat:no-repeat;font-family:verdana}
+        #loginForm{width:40%;margin:auto;padding:20px;background-color:rgba(255,255,255,0.8);text-align:center;margin-top:50px;
+        border-radius:5px}
+        #loginForm table{width:100%;padding:10px}
+        #loginForm td{padding:10px;text-align:left}
+        #loginForm .textField{width:90%;height:25px;padding:10px;}
+        #loginForm button{width:80%;padding:10px;background-color:rgba(0,0,255,0.8);border-radius:5px;color:white;font-family:verdana;
+        border:0px}
+        #loginForm .selectField{width:98%;height:40px;}
+        #loginForm #error_p{color:red;font-weight:bolder}
+
+    </style>
+</head>
+<body>
+    <div id="loginForm">
+
+        <form action="" method="post">
+         {% csrf_token %}
+         <table>
+         <tr>
+             <td></td>
+             <td><p id="error_p">{{ error }}</p></td>
+         </tr>
+         {% for field in form %}
+         <tr>
+             <td>{{ field.label }}</td>
+             <td>{{ field }}</td>
+         </tr>
+         {% endfor %}
+         <tr>
+             <td></td><td><button type="submit">Login</button></td>
+         </tr>
+         </table>
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'Lecturer/homepage.html' %}
+{% block title %}
+View User Detail
+{% endblock %}
+{% block content %}
+<div id="userDetailsDiv">
+    <p id="headerText"><small>User / Details</small></p>
+
+    <p><strong>Names: </strong> {{ userDetails.Surname }} {{ userDetails.Firstname }}</p>
+    <p><strong>User Id:</strong> {{ userDetails.UserId }}</p>
+
+    <p id="buttonP"><a href="{% url 'LecturerChatPage' comId %}"><button>Message</button></a> </p>
+</div>
+<!--  -->
+{% endblock %}

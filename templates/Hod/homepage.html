@@ -1,0 +1,14 @@
+{% extends 'Lecturer/homepage.html' %}
+{% block title %}
+Lecturer Homepage
+{% endblock %}
+{% block links %}
+<p id="headerP">HOD Portal</p>
+<a href=""><li><span class="fa fa-dashboard"></span>&#160;&#160; Dashboard</li></a>
+<a href="{% url 'HodSelectResultCategoryPage' %}"><li><span class="fa fa-eye"></span>&#160;&#160; View  Results</li></a>
+<a href="{% url 'HodViewUsersPage' %}"><li><span class="fa fa-eye"></span>&#160;&#160; All Users</li></a>
+<a href="{% url 'HodMessagePage' %}"><li><span class="fa fa-message"></span>&#160;&#160;Messages</li></a>
+<a href=""><li><span class="fa fa-gears"></span>&#160;&#160; Change Password</li></a>
+{% endblock %}
+{% block content %}
+{% endblock %}
